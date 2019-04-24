@@ -1,4 +1,23 @@
 version: '3.2'
+services:
+  web:
+    image: nginx:stable-alpine
+    restart: always
+    links:
+      - php
+    ports:
+      - "80:80"
+    depends_on:
+      - php
+    networks:
+      - internal
+  php:
+    build:
+      context: .
+      dockerfile: ./docker/local/dockerfiles/dockerfile_php7
+    restart: always
+    networks:
+      - internal
 networks:
   internal:
 
