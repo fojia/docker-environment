@@ -1,7 +1,6 @@
 version: '3.2'
 services:
   web:
-    image: nginx:stable-alpine
     restart: always
     links:
       - php
@@ -12,9 +11,6 @@ services:
     networks:
       - internal
   php:
-    build:
-      context: .
-      dockerfile: ./docker/local/dockerfiles/dockerfile_php7
     restart: always
     networks:
       - internal
