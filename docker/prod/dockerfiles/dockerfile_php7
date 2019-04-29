@@ -20,12 +20,6 @@ RUN docker-php-ext-install soap
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-RUN pecl install xdebug \
-    && docker-php-ext-enable xdebug
 
 #Add custtom php ini setting to other settings
-ADD ./docker/config/php/* /usr/local/etc/php/conf.d/
-
-
-
-
+ADD ./docker/prod/config/php/* /usr/local/etc/php/conf.d/

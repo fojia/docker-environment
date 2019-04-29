@@ -1,6 +1,7 @@
 version: '3.2'
 services:
   web:
+    image: nginx:stable-alpine
     restart: always
     links:
       - php
@@ -8,13 +9,19 @@ services:
       - "80:80"
     depends_on:
       - php
+    volumes:
+      - ./docker/prod/config/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./:/var/www/html:rw
     networks:
       - internal
   php:
+    build:
+      context: .
+      dockerfile: ./docker/prod/dockerfiles/dockerfile_php7
     restart: always
+    volumes:
+      - ./:/var/www/html:rw
     networks:
       - internal
 networks:
   internal:
-
-

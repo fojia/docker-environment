@@ -1,7 +1,7 @@
 local:
-	docker-compose -f docker-compose.yml -f ./docker-compose.local.yml -p project up --build -d
+	docker-compose -f docker-compose.yml -f docker-compose.local.yml -p project up --build -d
 prod:
-	docker-compose -f docker-compose.yml -f ./docker-compose.prod.yml -p project up --build -d
+	docker-compose -f docker-compose.yml -f docker-compose.prod.yml -p project up --build -d
 down:
 	docker-compose -p project down
 kill:
